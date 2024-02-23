@@ -3,30 +3,30 @@ using System.Diagnostics.CodeAnalysis;
 using static LW1.Helper;
 
 
-BinaryFloat float1 = new(ReadFloat());
+//BinaryFloat float1 = new(ReadFloat());
 
-ShowDetails(float1);
+//ShowDetails(float1);
 
-BinaryFloat float2 = new(ReadFloat());
+//BinaryFloat float2 = new(ReadFloat());
 
-ShowDetails(float2);
+//ShowDetails(float2);
 
-BinaryFloat float3 = float1 + float2;
+//BinaryFloat float3 = float1 + float2;
 
-ShowDetails(float3);
+//ShowDetails(float3);
 
 
-//BinaryInteger a = new(ReadInt());
+BinaryFixed a = new(ReadInt());
 
-//ShowDetails(a);
+ShowDetails(a);
 
-//BinaryInteger b = new(ReadInt());
+BinaryFixed b = new(ReadInt());
 
-//ShowDetails(b);
+ShowDetails(b);
 
-//BinaryInteger c = a * b;
+//Console.WriteLine(a / b);
 
-//ShowDetails(c);
+ShowDetails(a / b);
 
 [ExcludeFromCodeCoverage]
 public partial class Program { }

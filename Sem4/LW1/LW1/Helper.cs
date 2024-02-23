@@ -7,13 +7,25 @@ namespace LW1
     [ExcludeFromCodeCoverage]
     public static class Helper
     {
-        public static void ShowDetails(BinaryInteger a)
+        public static void ShowDetails(BinaryFixed a)
         {
+            var directCodeString = a.DirectCode().ToConsoleString();
+            var invertCodeString = a.InvertCode().ToConsoleString();
+            var additionalCodeString = a.AdditionalCode().ToConsoleString();
+
+            var precision = a.Precision;
+            if (precision != 0)
+            {
+                directCodeString = directCodeString.Insert(a.BitCount - precision, ".");
+                invertCodeString = invertCodeString.Insert(a.BitCount - precision, ".");
+                additionalCodeString = additionalCodeString.Insert(a.BitCount - precision, ".");
+            }
+
             Console.WriteLine(
                 $"Dec:\t{a.ToDecimal()}\n" +
-                $"Dir:\t{a.DirectCode().ToConsoleString()}\n" +
-                $"Inv:\t{a.InvertCode().ToConsoleString()}\n" +
-                $"Add:\t{a.AdditionalCode().ToConsoleString()}\n"
+                $"Dir:\t{directCodeString}\n" +
+                $"Inv:\t{invertCodeString}\n" +
+                $"Add:\t{additionalCodeString}\n"
                 );
         }
         public static void ShowDetails(BinaryFloat a)
