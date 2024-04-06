@@ -5,7 +5,7 @@ using System.Text;
 namespace LW1
 {
     [ExcludeFromCodeCoverage]
-    public static class Helper
+    public static class Printer
     {
         public static void ShowDetails(BinaryFixed a)
         {

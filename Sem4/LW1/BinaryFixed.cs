@@ -93,7 +93,7 @@ public class BinaryFixed
         {
             return DirectCode();
         }
-    }
+    }   
     public BitArray InvertCode()
     {
         var result = (BitArray)_bits.Clone();
