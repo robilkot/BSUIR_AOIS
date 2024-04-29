@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="LabLogger">
+      <HintPath>..\..\..\..\LabLogger\LabLogger\bin\Debug\net8.0\LabLogger.dll</HintPath>
+    </Reference>
     <Reference Include="LogicalExpressionClassLibrary">
       <HintPath>..\..\LW2\LogicalExpressionClassLibrary\bin\Debug\net8.0\LogicalExpressionClassLibrary.dll</HintPath>
     </Reference>

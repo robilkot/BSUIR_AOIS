@@ -1,4 +1,5 @@
-﻿using LogicalExpressionClassLibrary.LogicalExpressionTree;
+﻿using LabLogger;
+using LogicalExpressionClassLibrary.LogicalExpressionTree;
 using LogicalExpressionClassLibrary.LogicalExpressionTree.OperationNodes;
 using LogicalExpressionClassLibrary.LogicalExpressionTree.ValueNodes;
 using LogicalExpressionClassLibrary.LogicalParser;
@@ -78,7 +79,7 @@ namespace LogicalExpressionClassLibrary
         {
             if (input.Length == 0)
             {
-                ConsoleLogger.Log($"Expression notation is empty", ConsoleLogger.DebugLevels.Error);
+                Logger.Log($"Expression notation is empty", Logger.Levels.Error);
                 throw new ArgumentException("Expression notation is empty");
             }
 
@@ -199,7 +200,7 @@ namespace LogicalExpressionClassLibrary
 
             do
             {
-                ConsoleLogger.Log("Next combination of values", ConsoleLogger.DebugLevels.Debug);
+                Logger.Log("Next combination of values", Logger.Levels.Debug);
 
                 int variableIndex = 0;
 
@@ -223,7 +224,7 @@ namespace LogicalExpressionClassLibrary
             }
             while (variablesTruthMask.HasAnySet());
 
-            ConsoleLogger.Log("Reverting to default values", ConsoleLogger.DebugLevels.Debug);
+            Logger.Log("Reverting to default values", Logger.Levels.Debug);
 
             foreach (var kv in initialVariablesState)
             {
@@ -317,7 +318,7 @@ namespace LogicalExpressionClassLibrary
                 twosPower++;
             }
 
-            ConsoleLogger.Log($"Index form: {Convert.ToString(numberForm, 2)}", ConsoleLogger.DebugLevels.Info);
+            Logger.Log($"Index form: {Convert.ToString(numberForm, 2)}", Logger.Levels.Info);
 
             return numberForm;
         }
@@ -347,7 +348,7 @@ namespace LogicalExpressionClassLibrary
 
             if (NormalForm._root is null)
             {
-                ConsoleLogger.Log($"Cannot build {strategy}", ConsoleLogger.DebugLevels.Error);
+                Logger.Log($"Cannot build {strategy}", Logger.Levels.Error);
                 throw new InvalidOperationException($"Cannot build {strategy}");
             }
 

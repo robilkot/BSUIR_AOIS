@@ -1,10 +1,12 @@
-﻿using LogicalExpressionClassLibrary;
+﻿using LabLogger;
 using LW4;
 
-ConsoleLogger.DebugLevel =
-    ConsoleLogger.DebugLevels.Warning
-    | ConsoleLogger.DebugLevels.Error
-    | ConsoleLogger.DebugLevels.Info
+Logger.UseConsoleLogger();
+
+Logger.Level = 0
+    | Logger.Levels.Warning
+    | Logger.Levels.Error
+    | Logger.Levels.Info
     ;
 
 Console.WriteLine("Variant 3-e");

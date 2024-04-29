@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="LabLogger">
+      <HintPath>..\..\..\..\LabLogger\LabLogger\bin\Debug\net8.0\LabLogger.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

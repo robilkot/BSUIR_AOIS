@@ -1,4 +1,6 @@
-﻿namespace LogicalExpressionClassLibrary.LogicalExpressionTree.ValueNodes
+﻿using LabLogger;
+
+namespace LogicalExpressionClassLibrary.LogicalExpressionTree.ValueNodes
 {
     public sealed class AtomicFormulaNode : TreeNode
     {
@@ -10,7 +12,7 @@
             {
                 if (!ValidateName(value))
                 {
-                    ConsoleLogger.Log($"Invalid atomic formula", ConsoleLogger.DebugLevels.Error);
+                    Logger.Log($"Invalid atomic formula", Logger.Levels.Error);
                     throw new ArgumentException("Invalid atomic formula");
                 }
 
@@ -25,7 +27,7 @@
             get => _value;
             set
             {
-                ConsoleLogger.Log($"Set {Name} to {value}", ConsoleLogger.DebugLevels.Debug);
+                Logger.Log($"Set {Name} to {value}", Logger.Levels.Debug);
 
                 if (_value != value)
                 {

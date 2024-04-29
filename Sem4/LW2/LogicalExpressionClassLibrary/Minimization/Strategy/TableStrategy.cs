@@ -1,4 +1,6 @@
-﻿namespace LogicalExpressionClassLibrary.Minimization.Strategy
+﻿using LabLogger;
+
+namespace LogicalExpressionClassLibrary.Minimization.Strategy
 {
     public class TableStrategy : IMinimizationStrategy
     {
@@ -13,7 +15,7 @@
 
             var karnaugh = Karnaugh.Karnaugh.CreateKarnaugh(source, form);
 
-            if (ConsoleLogger.DebugLevel.HasFlag(ConsoleLogger.DebugLevels.Info))
+            if (Logger.Level.HasFlag(Logger.Levels.Info))
             {
                 karnaugh.PrintTable();
             }
@@ -26,7 +28,7 @@
             }
             catch (Exception ex)
             {
-                ConsoleLogger.Log(ex.Message, ConsoleLogger.DebugLevels.Error);
+                Logger.Log(ex.Message, Logger.Levels.Error);
                 return LogicalExpression.Empty;
             }
         }

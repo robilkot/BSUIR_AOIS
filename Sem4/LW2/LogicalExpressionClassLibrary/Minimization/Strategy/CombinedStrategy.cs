@@ -1,4 +1,5 @@
-﻿using LogicalExpressionClassLibrary.LogicalExpressionTree;
+﻿using LabLogger;
+using LogicalExpressionClassLibrary.LogicalExpressionTree;
 
 namespace LogicalExpressionClassLibrary.Minimization.Strategy
 {
@@ -36,7 +37,7 @@ namespace LogicalExpressionClassLibrary.Minimization.Strategy
                     }
                 } else
                 {
-                    ConsoleLogger.Log("Implicant row already exists in table. Please report", ConsoleLogger.DebugLevels.Warning);
+                    Logger.Log("Implicant row already exists in table. Please report", Logger.Levels.Warning);
                 }
             }
 
@@ -62,7 +63,7 @@ namespace LogicalExpressionClassLibrary.Minimization.Strategy
                 return containments.Values.All(value => value != 0);
             }
 
-            ConsoleLogger.Log($"Minimization table:\n{table.ToTableString()}", ConsoleLogger.DebugLevels.Info);
+            Logger.Log($"Minimization table:\n{table.ToTableString()}", Logger.Levels.Info);
 
             Dictionary<string, Dictionary<string, bool>> currentTable = new(table);
             List<TreeNode> oddNodes = [];
@@ -77,7 +78,7 @@ namespace LogicalExpressionClassLibrary.Minimization.Strategy
                 {
                     oddNodes.Add(implicant);
 
-                    ConsoleLogger.Log($"Found odd implicant: {implicant}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Found odd implicant: {implicant}", Logger.Levels.Debug);
                 }
                 else
                 {
@@ -87,12 +88,12 @@ namespace LogicalExpressionClassLibrary.Minimization.Strategy
 
             if (oddNodes.Count == 0 || oddNodes.Count == implicants.Count)
             {
-                ConsoleLogger.Log($"No odd implicants found", ConsoleLogger.DebugLevels.Debug);
+                Logger.Log($"No odd implicants found", Logger.Levels.Debug);
             } else
             {
                 foreach (var node in oddNodes)
                 {
-                    ConsoleLogger.Log($"Removing odd implicant {node}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Removing odd implicant {node}", Logger.Levels.Debug);
                     implicants.Remove(node);
                 }
             }

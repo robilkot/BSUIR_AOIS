@@ -1,4 +1,5 @@
-﻿using LogicalExpressionClassLibrary.Minimization.Strategy;
+﻿using LabLogger;
+using LogicalExpressionClassLibrary.Minimization.Strategy;
 
 namespace LogicalExpressionClassLibrary.Minimization
 {
@@ -7,11 +8,11 @@ namespace LogicalExpressionClassLibrary.Minimization
         public static LogicalExpression Minimize(this LogicalExpression expr, NormalForms normalForm, IMinimizationStrategy strategy = null!)
         {
             strategy ??= new CombinedStrategy();
-            ConsoleLogger.Log($"Started minimizing using {strategy.GetType().Name}: {expr}", ConsoleLogger.DebugLevels.Info);
+            Logger.Log($"Started minimizing using {strategy.GetType().Name}: {expr}", Logger.Levels.Info);
 
             var toReturn = strategy.Minimize(expr, normalForm);
 
-            ConsoleLogger.Log($"Finished minimizing using {strategy.GetType().Name}: {toReturn}", ConsoleLogger.DebugLevels.Info);
+            Logger.Log($"Finished minimizing using {strategy.GetType().Name}: {toReturn}", Logger.Levels.Info);
 
             return toReturn;
         }

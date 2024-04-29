@@ -1,4 +1,6 @@
-﻿namespace LogicalExpressionClassLibrary.LogicalExpressionTree
+﻿using LabLogger;
+
+namespace LogicalExpressionClassLibrary.LogicalExpressionTree
 {
     public abstract class TreeNode
     {
@@ -33,7 +35,7 @@
                 {
                     _evaluation = Evaluate();
 
-                    ConsoleLogger.Log($"Evaluate {ToString()}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Evaluate {ToString()}", Logger.Levels.Debug);
                 }
                 return _evaluation.Value;
             }
@@ -49,7 +51,7 @@
             if (_evaluation != null)
             {
                 string logStringAddition = Parent is null ? string.Empty : $" with parent {Parent}";
-                ConsoleLogger.Log($"Clear {GetType().Name}" + logStringAddition, ConsoleLogger.DebugLevels.Debug);
+                Logger.Log($"Clear {GetType().Name}" + logStringAddition, Logger.Levels.Debug);
 
                 _evaluation = null;
                 // If value is outdated then upper tree part is also outdated

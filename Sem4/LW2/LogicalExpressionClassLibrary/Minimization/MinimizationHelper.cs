@@ -1,4 +1,5 @@
-﻿using LogicalExpressionClassLibrary.LogicalExpressionTree;
+﻿using LabLogger;
+using LogicalExpressionClassLibrary.LogicalExpressionTree;
 using LogicalExpressionClassLibrary.LogicalExpressionTree.OperationNodes;
 using System.Security;
 
@@ -286,7 +287,7 @@ namespace LogicalExpressionClassLibrary.Minimization
                     yetNotProcessedConstituents.Remove(pair.Item1.ToString()!);
                     yetNotProcessedConstituents.Remove(pair.Item2.ToString()!);
 
-                    ConsoleLogger.Log($"Merged {pair.Item1} and {pair.Item2} to {pairToAdd}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Merged {pair.Item1} and {pair.Item2} to {pairToAdd}", Logger.Levels.Info);
                 }
                 foreach (var constituent in yetNotProcessedConstituents)
                 {
@@ -296,7 +297,7 @@ namespace LogicalExpressionClassLibrary.Minimization
                 input = BuildNFFromStringSet(mergedConstituents, form);
             }
 
-            ConsoleLogger.Log($"Expression after merging: {input}", ConsoleLogger.DebugLevels.Info);
+            Logger.Log($"Expression after merging: {input}", Logger.Levels.Info);
 
             return input;
         }

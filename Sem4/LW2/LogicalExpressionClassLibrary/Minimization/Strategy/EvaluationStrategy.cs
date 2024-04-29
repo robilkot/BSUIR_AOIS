@@ -1,4 +1,6 @@
-﻿namespace LogicalExpressionClassLibrary.Minimization.Strategy
+﻿using LabLogger;
+
+namespace LogicalExpressionClassLibrary.Minimization.Strategy
 {
     public class EvaluationStrategy : IMinimizationStrategy
     {
@@ -17,7 +19,7 @@
 
             if(implicants.Count < 2)
             {
-                ConsoleLogger.Log($"Expression already minimized", ConsoleLogger.DebugLevels.Info);
+                Logger.Log($"Expression already minimized", Logger.Levels.Info);
                 return source;
             }
 
@@ -27,7 +29,7 @@
             {
                 foreach (var implicant in implicants)
                 {
-                    ConsoleLogger.Log($"Trying to remove implicant {implicant}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Trying to remove implicant {implicant}", Logger.Levels.Debug);
 
                     var variables = MinimizationHelper.GetVariables(implicant, form);
                     HashSet<string> currentImplicantsCombination = [];
@@ -47,17 +49,17 @@
 
                         currentImplicantsCombination.Add(modifiedString);
 
-                        ConsoleLogger.Log($"Modified implicant {implicantToModify} to {modifiedString}", ConsoleLogger.DebugLevels.Debug);
+                        Logger.Log($"Modified implicant {implicantToModify} to {modifiedString}", Logger.Levels.Debug);
                     }
 
                     LogicalExpression remainder = MinimizationHelper.BuildNFFromStringSet(currentImplicantsCombination, form);
 
-                    ConsoleLogger.Log($"Expression without implicant {implicant}\n{remainder.ToTruthTableString()}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Expression without implicant {implicant}\n{remainder.ToTruthTableString()}", Logger.Levels.Debug);
 
                     if (remainder.IsContradictive())
                     {
                         allImplicants.Remove(implicant.ToString()!);
-                        ConsoleLogger.Log($"Found odd implicant {implicant}", ConsoleLogger.DebugLevels.Debug);
+                        Logger.Log($"Found odd implicant {implicant}", Logger.Levels.Debug);
 
                         if (allImplicants.Count < 2)
                             break;
@@ -68,7 +70,7 @@
             {
                 foreach (var implicant in implicants)
                 {
-                    ConsoleLogger.Log($"Trying to remove implicant {implicant}", ConsoleLogger.DebugLevels.Debug);
+                    Logger.Log($"Trying to remove implicant {implicant}", Logger.Levels.Debug);
 
                     var variables = MinimizationHelper.GetVariables(implicant, form);
 
@@ -90,12 +92,12 @@
 
                             currentImplicantsCombination.Add(modifiedString);
 
-                            ConsoleLogger.Log($"Modified implicant {implicantToModify} to {modifiedString}", ConsoleLogger.DebugLevels.Debug);
+                            Logger.Log($"Modified implicant {implicantToModify} to {modifiedString}", Logger.Levels.Debug);
                         }
 
                         LogicalExpression exprWithoutOneVariable = MinimizationHelper.BuildNFFromStringSet(currentImplicantsCombination, form);
 
-                        ConsoleLogger.Log($"{exprWithoutOneVariable} without {variable}\n{exprWithoutOneVariable.ToTruthTableString()}", ConsoleLogger.DebugLevels.Debug);
+                        Logger.Log($"{exprWithoutOneVariable} without {variable}\n{exprWithoutOneVariable.ToTruthTableString()}", Logger.Levels.Debug);
 
                         if (exprWithoutOneVariable.IsContradictive())
                         {
@@ -107,7 +109,7 @@
                     if (implicantIsOdd)
                     {
                         allImplicants.Remove(implicant.ToString()!);
-                        ConsoleLogger.Log($"Found odd implicant {implicant}", ConsoleLogger.DebugLevels.Debug);
+                        Logger.Log($"Found odd implicant {implicant}", Logger.Levels.Debug);
 
                         if (allImplicants.Count < 2)
                             break;
@@ -123,7 +125,7 @@
             }
             catch (Exception ex)
             {
-                ConsoleLogger.Log(ex.Message, ConsoleLogger.DebugLevels.Error);
+                Logger.Log(ex.Message, Logger.Levels.Error);
                 return LogicalExpression.Empty;
             }
         }
