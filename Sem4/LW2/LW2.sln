@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicalExpressionUnitTest",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicalExpressionConsoleApp", "LogicalExpressionConsoleApp\LogicalExpressionConsoleApp.csproj", "{F5D48C87-A51C-4E51-97E4-2EE55C2D1BAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LW4", "LW4\LW4.csproj", "{26217FD0-6BA6-443D-9419-F2150F96F8E2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{F5D48C87-A51C-4E51-97E4-2EE55C2D1BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5D48C87-A51C-4E51-97E4-2EE55C2D1BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5D48C87-A51C-4E51-97E4-2EE55C2D1BAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26217FD0-6BA6-443D-9419-F2150F96F8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26217FD0-6BA6-443D-9419-F2150F96F8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26217FD0-6BA6-443D-9419-F2150F96F8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26217FD0-6BA6-443D-9419-F2150F96F8E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

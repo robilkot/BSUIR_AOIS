@@ -2,7 +2,6 @@
 using LogicalExpressionClassLibrary.LogicalExpressionTree.OperationNodes;
 using LogicalExpressionClassLibrary.LogicalExpressionTree.ValueNodes;
 using LogicalExpressionClassLibrary.LogicalParser;
-using LogicalExpressionClassLibrary.Minimization.Strategy;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -56,7 +55,7 @@ namespace LogicalExpressionClassLibrary
             {
                 if (_fdnf is null)
                 {
-                    _fdnf = BuildNormalForm(NormalForms.FDNF);
+                    _fdnf = BuildNormalForm(TruthTable, ToString(), NormalForms.FDNF);
                     _fdnf._fdnf = _fdnf;
                 }
                 return _fdnf;
@@ -69,7 +68,7 @@ namespace LogicalExpressionClassLibrary
             {
                 if (_fcnf is null)
                 {
-                    _fcnf = BuildNormalForm(NormalForms.FCNF);
+                    _fcnf = BuildNormalForm(TruthTable, ToString(), NormalForms.FCNF);
                     _fcnf._fcnf = _fcnf;
                 }
                 return _fcnf;
@@ -90,13 +89,26 @@ namespace LogicalExpressionClassLibrary
         }
         private LogicalExpression() { }
         public static LogicalExpression Empty { get => new(); }
+
+        public static LogicalExpression NFFromTruthTable(List<Dictionary<string, bool>> truthTable, List<string> variables, string totalColumn, NormalForms form = NormalForms.FCNF)
+        {
+            var result = Empty;
+
+            // Init empty variables nodes list for new expression
+            foreach (var v in variables)
+            {
+                result.Variables.Add(v, []);
+            }
+
+            return result.BuildNormalForm(truthTable, totalColumn, form);
+        }
         private TreeNode BuildNormalFormOperand(Dictionary<string, List<AtomicFormulaNode>> variables, Dictionary<string, bool> row, NormalForms strategy)
         {
             TreeNode? root = null;
 
             foreach (var variable in _variables!)
             {
-                var atomicFormulaNode = new AtomicFormulaNode(variable.Value[0]);
+                var atomicFormulaNode = new AtomicFormulaNode(variable.Key);
 
                 string atomicFormulaNodeString = atomicFormulaNode.ToString();
 
@@ -309,11 +321,11 @@ namespace LogicalExpressionClassLibrary
 
             return numberForm;
         }
-        private LogicalExpression BuildNormalForm(NormalForms strategy)
+        private LogicalExpression BuildNormalForm(List<Dictionary<string, bool>> thuthTable, string resultValue, NormalForms strategy)
         {
             LogicalExpression NormalForm = new();
 
-            foreach (var truthRow in TruthTable.Where(r => r[ToString()] ^ strategy == NormalForms.FCNF))
+            foreach (var truthRow in thuthTable.Where(r => r[resultValue] ^ strategy == NormalForms.FCNF))
             {
                 var newOperand = BuildNormalFormOperand(NormalForm._variables, truthRow, strategy);
 
@@ -407,12 +419,6 @@ namespace LogicalExpressionClassLibrary
             string currentExpressionNotation = ToString();
 
             return !TruthTable.Any(row => row[currentExpressionNotation] == true);
-        }
-        public bool ImpliesFrom(LogicalExpression source)
-        {
-            LogicalExpression implication = new($"({source}→{this})");
-
-            return implication.IsTautology();
         }
     }
 }

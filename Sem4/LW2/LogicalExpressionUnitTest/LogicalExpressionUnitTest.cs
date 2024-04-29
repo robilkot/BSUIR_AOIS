@@ -188,22 +188,5 @@ namespace LogicalExpressionUnitTest
 
             Assert.NotEqual(oldResult, expr.Evaluation);
         }
-
-        [Theory]
-        [InlineData("((¬A1)&A2)|A3)", "((¬A1)&A2)|A3)", true)]
-        [InlineData("(A|B)", "A", false)]
-        public void ImpliesFrom_shouldEqualExprected(string input1, string input2, bool result)
-        {
-            ConsoleLogger.DebugLevel =
-                ConsoleLogger.DebugLevels.Debug | ConsoleLogger.DebugLevels.Info |
-                ConsoleLogger.DebugLevels.Warning | ConsoleLogger.DebugLevels.Error;
-
-            LogicalExpression expr1 = new(input1);
-            LogicalExpression expr2 = new(input2);
-
-            var actualResult = expr2.ImpliesFrom(expr1);
-
-            Assert.Equal(result, actualResult);
-        }
     }
 }
