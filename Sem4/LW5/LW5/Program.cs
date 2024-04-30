@@ -5,7 +5,7 @@ using LogicalExpressionClassLibrary.Minimization.Strategy;
 using System.Collections;
 
 Logger.UseConsoleLogger();
-Logger.Level = Logger.Levels.Info;
+//Logger.Level = Logger.Levels.Info;
 
 static void NextCombination(BitArray bits)
 {
@@ -93,15 +93,14 @@ var variables = new List<string>(pvars)
 
 foreach (var v in hvars)
 {
-    var initialFCNF = LogicalExpression.NFFromTruthTable(truthTable, variables, v, NormalForms.FCNF);
-    var initialFDNF = LogicalExpression.NFFromTruthTable(truthTable, variables, v, NormalForms.FDNF);
+    var form = NormalForms.FDNF;
 
-    //Logger.Log($"{v} FCNF: {initialFCNF}");
-    var minimizedFCNF = initialFCNF.Minimize(NormalForms.FCNF, new TableStrategy());
-    Logger.Log($"{v} FCNF min: {minimizedFCNF}");
+    var initialFDNF = LogicalExpression.NFFromTruthTable(truthTable, variables, v, form);
 
-    //Logger.Log($"{v} FDNF: {initialFDNF}");
-    var minimizedFDNF = initialFDNF.Minimize(NormalForms.FDNF, new TableStrategy());
-    Logger.Log($"{v} FDNF min: {minimizedFDNF}");
+    Console.WriteLine($"{v} {form}: {initialFDNF}");
+    var minimized = initialFDNF.Minimize(form);
+    Console.WriteLine($"{v} {form} min: {minimized}");
+
+    Console.WriteLine();
 }
 
