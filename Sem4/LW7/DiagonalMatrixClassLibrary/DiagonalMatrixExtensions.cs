@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace LW7ConsoleApp
+namespace DiagonalMatrixClassLibrary
 {
     public static class DiagonalMatrixExtensions
     {

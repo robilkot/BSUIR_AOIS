@@ -1,11 +1,9 @@
-﻿using LW7ConsoleApp;
+﻿using DiagonalMatrixClassLibrary;
 
-DiagonalMatrix diagonalMatrix = new DiagonalMatrix();
+DiagonalMatrix diagonalMatrix = new();
 
-bool[] m = [true, true, true, true, true, false, false, false, false, true, true, true, false, false, false, false];
-diagonalMatrix.SetWord(3, m);
-
+bool[] word = [true, true, true, true, true, false, false, false, false, true, true, true, false, false, false, false];
+diagonalMatrix.SetWord(13, word);
 
 Console.WriteLine(diagonalMatrix);
-Console.WriteLine();
-Console.WriteLine("Word 3: " + diagonalMatrix.GetWord(3).ToRowString());
+Console.WriteLine("Word 3: " + diagonalMatrix.GetWord(13).ToRowString());

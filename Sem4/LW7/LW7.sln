@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LW7ConsoleApp", "LW7ConsoleApp\LW7ConsoleApp.csproj", "{D1E8CB04-A734-46B9-A57E-4B6A86EADD56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LW7ConsoleApp", "LW7ConsoleApp\LW7ConsoleApp.csproj", "{D1E8CB04-A734-46B9-A57E-4B6A86EADD56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagonalMatrixClassLibrary", "DiagonalMatrixClassLibrary\DiagonalMatrixClassLibrary.csproj", "{FA8489CF-03AE-414C-8479-8E281BC83D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagonalMatrixUnitTests", "DiagonalMatrixUnitTests\DiagonalMatrixUnitTests.csproj", "{E4189F25-70ED-47E7-B763-18A941F6D549}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D1E8CB04-A734-46B9-A57E-4B6A86EADD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1E8CB04-A734-46B9-A57E-4B6A86EADD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1E8CB04-A734-46B9-A57E-4B6A86EADD56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA8489CF-03AE-414C-8479-8E281BC83D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8489CF-03AE-414C-8479-8E281BC83D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8489CF-03AE-414C-8479-8E281BC83D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8489CF-03AE-414C-8479-8E281BC83D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4189F25-70ED-47E7-B763-18A941F6D549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4189F25-70ED-47E7-B763-18A941F6D549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4189F25-70ED-47E7-B763-18A941F6D549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4189F25-70ED-47E7-B763-18A941F6D549}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
