@@ -99,7 +99,7 @@ foreach (var v in hvars)
 
     Console.WriteLine($"{v} {form}: {initialFDNF}");
     var minimized = initialFDNF.Minimize(form);
-    Console.WriteLine($"{v} {form} min: {minimized}");
+    Console.WriteLine($"{v} {form} minimized: {minimized}");
 
     Console.WriteLine();
 }
