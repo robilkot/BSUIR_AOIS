@@ -9,7 +9,12 @@ Logger.Level = 0
     | Logger.Levels.Info
     ;
 
-Console.WriteLine("Variant 3-e");
-FirstPart.Execute();
+//Console.WriteLine("Variant 3-e");
+//FirstPart.Execute();
+//Console.WriteLine();
+//SecondPart.Execute();
+
+
+Console.WriteLine("Variant 3-a");
 Console.WriteLine();
-SecondPart.Execute();
+SecondPart_1.Execute();

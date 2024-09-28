@@ -24,16 +24,20 @@ static void NextCombination(BitArray bits)
 
 List<Dictionary<string, bool>> truthTable = [];
 
-const int states = 16;
+const int states = 8;
 
 for (int i = 0; i < states * 2; i++)
 {
     truthTable.Add([]);
 }
 
-string[] pvars = ["q40", "q30", "q20", "q10"];
-string[] vars = ["q4", "q3", "q2", "q1"];
-string[] hvars = ["h4", "h3", "h2", "h1"];
+string[] pvars = ["q30", "q20", "q10"];
+string[] vars = ["q3", "q2", "q1"];
+string[] hvars = ["h3", "h2", "h1"];
+
+//string[] pvars = ["q40", "q30", "q20", "q10"];
+//string[] vars = ["q4", "q3", "q2", "q1"];
+//string[] hvars = ["h4", "h3", "h2", "h1"];
 
 foreach (var row in truthTable)
 {
@@ -57,11 +61,11 @@ foreach (var row in truthTable)
 
 #region Fill truth table
 
-BitArray qpBitMask = new(4, true);
+BitArray qpBitMask = new(pvars.Length, true);
 
 for (int i = 0; i < states; i++)
 {
-    for (int k = 0; k < 4; k++)
+    for (int k = 0; k < pvars.Length; k++)
     {
         // current state
         truthTable[2 * i][vars[k]]

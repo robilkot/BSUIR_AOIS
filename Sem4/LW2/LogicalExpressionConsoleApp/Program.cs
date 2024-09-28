@@ -14,15 +14,15 @@ Logger.Level = 0
     ;
 
 List<string> TestCases = [
-    "(((A)|(¬B))|((¬C)|(D))) & (((¬A)|(B))|((C)|(D))) & (((¬A)|(B))|((¬C)|(D))) & (((¬A)|(¬B))|((C)|(D))) & (((¬A)|(¬B))|((¬C)|(D)))",
-    "((A&B)~(¬C))",
+    "( ((¬A)&((¬B)&C)) | (((¬A)&B)&C) | ((¬A)&(B&(¬C))) | (A&(B&(¬C))) )",
     "(A→(¬(B|C)))",
+    "((A&B)~(¬C))",
+    "( ((¬A)&((B)&(C))) | ((A)&((¬B)&(¬C))) | ((A)&((¬B)&(C))) | ((A)&((B)&(¬C))) | ((A)&((B)&(C))) )",
+    "(((A)|(¬B))|((¬C)|(D))) & (((¬A)|(B))|((C)|(D))) & (((¬A)|(B))|((¬C)|(D))) & (((¬A)|(¬B))|((C)|(D))) & (((¬A)|(¬B))|((¬C)|(D)))",
     "(A&B&C)",
     "(A&B) | (A&(¬B)) | ((¬A)&B)",
     "(A|B)",
     "((E&A)→(B~(C|D)))",
-    "( ((¬A)&((¬B)&C)) | (((¬A)&B)&C) | ((¬A)&(B&(¬C))) | (A&(B&(¬C))) )",
-    "( ((¬A)&((B)&(C))) | ((A)&((¬B)&(¬C))) | ((A)&((¬B)&(C))) | ((A)&((B)&(¬C))) | ((A)&((B)&(C))) )",
     "((A|D)→(B~C))",
     "((B→A)~C)",
 ];
@@ -37,7 +37,7 @@ Console.WriteLine(expr.ToString());
 //Console.WriteLine(expr.FDNF.ToTruthTableString());
 
 //var min1FCNF = expr.Minimize(NormalForms.FCNF, new EvaluationStrategy());
-var min2FCNF = expr.Minimize(NormalForms.FCNF, new CombinedStrategy());
+var min2FCNF = expr.Minimize(NormalForms.FCNF, new TableStrategy());
 //var min3FCNF = expr.Minimize(NormalForms.FCNF, new TableStrategy());
 
 //var min1FDNF = expr.Minimize(NormalForms.FDNF, new EvaluationStrategy());
